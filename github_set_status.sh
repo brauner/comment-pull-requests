@@ -29,37 +29,38 @@ STATUS="pending"
 COMMIT=
 
 while getopts hn:t:r:s:c OPT; do
-        case "$OPT" in
-                h)
-                        echo $USAGE
-                        exit 0
-                        ;;
-                n)
-                        USERNAME="$OPTARG"
-                        ;;
-                t)      TOKEN="$OPTARG"
-                        ;;
-                r)
-                        REPO="$OPTARG"
-                        ;;
-                r)
-                        STATUS="$OPTARG"
-                        ;;
-                c)
-                        COMMIT="$OPTARG"
-                        ;;
-        esac
+	case "$OPT" in
+		h)
+			echo $USAGE
+			exit 0
+			;;
+		n)
+			USERNAME="$OPTARG"
+			;;
+		t)      
+			TOKEN="$OPTARG"
+			;;
+		r)
+			REPO="$OPTARG"
+			;;
+		r)
+			STATUS="$OPTARG"
+			;;
+		c)
+			COMMIT="$OPTARG"
+			;;
+	esac
 done
 
 if [ $# -lt 4 ]; then
-        echo $USAGE >&2
-        exit 1
+	echo $USAGE >&2
+	exit 1
 fi
 
 curl --user "$USERNAME:$TOKEN" \
-        --request POST \
-        --header "Content-Type: application/json" \
-        --data '{
+	--request POST \
+	--header "Content-Type: application/json" \
+	--data '{
 "state": "'"$STATUS"'",
 "target_url": "",
 "description": "This PR is intended for discussion only.",
