@@ -28,7 +28,7 @@ REPO=
 STATUS="pending"
 COMMIT=
 
-while getopts hn:t:r:s:c OPT; do
+while getopts hn:t:r:s:c: OPT; do
 	case "$OPT" in
 		h)
 			echo $USAGE
@@ -43,7 +43,7 @@ while getopts hn:t:r:s:c OPT; do
 		r)
 			REPO="$OPTARG"
 			;;
-		r)
+		s)
 			STATUS="$OPTARG"
 			;;
 		c)
@@ -57,7 +57,7 @@ if [ $# -lt 4 ]; then
 	exit 1
 fi
 
-curl --user "$USERNAME:$TOKEN" \
+curl --user "$USERNAME":"$TOKEN" \
 	--request POST \
 	--header "Content-Type: application/json" \
 	--data '{
