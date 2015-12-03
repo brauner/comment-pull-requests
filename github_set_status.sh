@@ -20,7 +20,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-USAGE="Usage: `basename $0` [-h] {-n username} [-t access-token] {-r repository} {-s status} {-c commit-sha}"
+USAGE="Usage: `basename $0` [-h] {-n username} [-t access-token] {-r repository} [-s status] {-c commit-sha}"
 
 USERNAME=
 TOKEN=
@@ -64,5 +64,5 @@ curl --user "$USERNAME:$TOKEN" \
 "state": "'"$STATUS"'",
 "target_url": "",
 "description": "This PR is intended for discussion only.",
-"context": "pull-request/work-in-progress"
+"context": "comment-pull-request/work-in-progress"
 }' https://api.github.com/repos/$REPO/statuses/$COMMIT
